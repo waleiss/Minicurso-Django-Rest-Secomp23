@@ -1,37 +1,47 @@
 from rest_framework import serializers
 from .models import *
 
-class UserSerializer(serializers.ModelSerializer):
+class AlunosSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = User
+        model = Alunos
         fields = '__all__'
 
-class ContasSerializer(serializers.ModelSerializer):
+class ProfessoresSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Contas
+        model = Professores
         fields = '__all__'
 
-class UfsSerializer(serializers.ModelSerializer):
+class DisciplinasSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Ufs
+        model = Disciplinas
         fields = '__all__'  
 
-class CidadesSerializer(serializers.ModelSerializer):
+class DisciplinaAlunoSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Cidades
+        model = DisciplinaAluno
         fields = '__all__'
 
-class EnderecosSerializer(serializers.ModelSerializer):
+class PlanoAulaSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Enderecos
+        model = PlanoAula
         fields = '__all__'
 
-class PessoasSerializer(serializers.ModelSerializer):
+class AtividadesSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Pessoas
+        model = Atividades
         fields = '__all__'
 
-class OcorrenciasSerializer(serializers.ModelSerializer):
+class AtividadeAlunoSerializer(serializers.ModelSerializer):
    class Meta: 
-        model = Ocorrencias
+        model = AtividadeAluno
+        fields = '__all__'
+
+class FrequenciaSerializer(serializers.ModelSerializer):
+   class Meta: 
+        model = Frequencia
+        fields = '__all__'
+
+class FrequenciaAlunoSerializer(serializers.ModelSerializer):
+   class Meta: 
+        model = FrequenciaAluno
         fields = '__all__'

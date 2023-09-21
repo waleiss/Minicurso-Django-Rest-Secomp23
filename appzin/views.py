@@ -7,30 +7,38 @@ from .serializers import *
 #   @action(detail=True, method=["get"])
 #   def data_modelo(self, request, pk=None):
 
-class UserViews(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class AlunosViews(viewsets.ModelViewSet):
+    queryset = Alunos.objects.all()
+    serializer_class = AlunosSerializer
 
-class ContasViews(viewsets.ModelViewSet):
-    queryset = Contas.objects.all()
-    serializer_class = ContasSerializer
+class ProfessoresViews(viewsets.ModelViewSet):
+    queryset = Professores.objects.all()
+    serializer_class = ProfessoresSerializer
 
-class UfsViews(viewsets.ModelViewSet):
-    queryset = Ufs.objects.all()
-    serializer_class = UfsSerializer
+class DisciplinasViews(viewsets.ModelViewSet):
+    queryset = Disciplinas.objects.all()
+    serializer_class = DisciplinasSerializer
 
-class CidadesViews(viewsets.ModelViewSet):
-    queryset = Cidades.objects.all()
-    serializer_class = CidadesSerializer
+class DisciplinaAlunoViews(viewsets.ModelViewSet):
+    queryset = DisciplinaAluno.objects.all()
+    serializer_class = DisciplinaAlunoSerializer
 
-class EnderecosViews(viewsets.ModelViewSet):
-    queryset = Enderecos.objects.all()
-    serializer_class = EnderecosSerializer
+class PlanoAulaViews(viewsets.ModelViewSet):
+    queryset = PlanoAula.objects.all()
+    serializer_class = PlanoAulaSerializer
 
-class PessoasViews(viewsets.ModelViewSet):
-    queryset = Pessoas.objects.all()
-    serializer_class = PessoasSerializer
+class AtividadesViews(viewsets.ModelViewSet):
+    queryset = Atividades.objects.all()
+    serializer_class = AtividadesSerializer
 
-class OcorrenciasViews(viewsets.ModelViewSet):
-    queryset = Ocorrencias.objects.all()
-    serializer_class = OcorrenciasSerializer
+class AtividadeAlunoViews(viewsets.ModelViewSet):
+    queryset = AtividadeAluno.objects.all()
+    serializer_class = AtividadeAlunoSerializer
+
+class FrequenciaViews(viewsets.ModelViewSet):
+    queryset = Frequencia.objects.all()
+    serializer_class = FrequenciaSerializer
+
+class FrequenciaAlunoViews(viewsets.ModelViewSet):
+    queryset = FrequenciaAluno.objects.all()
+    serializer_class = FrequenciaAlunoSerializer
