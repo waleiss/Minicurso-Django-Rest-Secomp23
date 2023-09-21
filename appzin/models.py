@@ -27,6 +27,11 @@ class Cidades(models.Model):
     nome_cidade = models.CharField(max_length=50)
     id_uf = models.ForeignKey(Ufs, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ["nome_cidade"]
+        db_table = "Cidades"
+        unique_together = ["nome_cidade", "id_uf"]
+
 class Enderecos(models.Model):
     id_endereco = models.IntegerField(primary_key = True)
     id_cidade = models.ForeignKey(Cidades, on_delete=models.CASCADE)
