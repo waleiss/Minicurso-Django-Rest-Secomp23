@@ -22,7 +22,7 @@ class Professores(models.Model):
 
 class Disciplinas(models.Model):
     id_disciplina = models.AutoField(primary_key = True)
-    id_professor = models.ForeignKey(Professores, on_delete=models.SET_NULL)
+    id_professor = models.ForeignKey(Professores, null = True, blank = True, on_delete=models.SET_NULL)
     nome = models.CharField(max_length=255)
     codigo = models.CharField(max_length=7)
     carga_horaria = models.IntegerField()
@@ -30,13 +30,13 @@ class Disciplinas(models.Model):
 
 class DisciplinaAluno(models.Model):
     id_matricula = models.IntegerField(primary_key = True)
-    id_aluno = models.ForeignKey(Alunos, on_delete=models.SET_NULL)
-    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.SET_NULL)
+    id_aluno = models.ForeignKey(Alunos, on_delete=models.CASCADE)
+    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.CASCADE)
     nota = models.FloatField(null = True, blank = True)
     
 class PlanoAula(models.Model):
     id_plano_aula = models.AutoField(primary_key = True)
-    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.SET_NULL)
+    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.CASCADE)
     tema_aula = models.CharField(max_length=255)
     conteudo = models.TextField()
     metodo = models.CharField(max_length=50)
@@ -44,8 +44,8 @@ class PlanoAula(models.Model):
  
 class Atividades(models.Model):
     id_atividade = models.AutoField(primary_key = True)
-    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.SET_NULL)
-    id_plano_aula = models.ForeignKey(PlanoAula, on_delete=models.SET_NULL)
+    id_disciplina = models.ForeignKey(Disciplinas, on_delete=models.CASCADE)
+    id_plano_aula = models.ForeignKey(PlanoAula, on_delete=models.CASCADE)
     atividade = models.TextField()
     tipo = models.CharField(max_length=50)
     data_postagem = models.DateField()
@@ -53,17 +53,17 @@ class Atividades(models.Model):
 
 class AtividadeAluno(models.Model):
     id = models.AutoField(primary_key = True)
-    id_atividade = models.ForeignKey(Atividades, on_delete=models.SET_NULL)
-    id_aluno = models.ForeignKey(Alunos, on_delete=models.SET_NULL)
+    id_atividade = models.ForeignKey(Atividades, on_delete=models.CASCADE)
+    id_aluno = models.ForeignKey(Alunos, on_delete=models.CASCADE)
     nota = models.FloatField(null = True, blank = True)
 
 class Frequencia(models.Model):
     id_frequencia = models.AutoField(primary_key = True)
-    id_materia = models.ForeignKey(Disciplinas, on_delete=models.SET_NULL)
+    id_materia = models.ForeignKey(Disciplinas, on_delete=models.CASCADE)
     dia = models.DateField()
 
 class FrequenciaAluno(models.Model):
     id = models.AutoField(primary_key = True)
-    id_aluno = models.ForeignKey(Alunos, on_delete=models.SET_NULL)
-    id_frequencia = models.ForeignKey(Frequencia, on_delete=models.SET_NULL)
+    id_aluno = models.ForeignKey(Alunos, on_delete=models.CASCADE)
+    id_frequencia = models.ForeignKey(Frequencia, on_delete=models.CASCADE)
     presenca = models.BooleanField()
